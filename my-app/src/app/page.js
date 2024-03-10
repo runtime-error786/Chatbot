@@ -33,7 +33,6 @@ function MainBox() {
 
   async function processMessageToChatGPT(chatMessages){
     const API_KEY =process.env.NEXT_PUBLIC_PUBLICAPI_KEY;
-    console.log(API_KEY)
     let apiMessages = chatMessages.map((messageObject)=>{
         let role="";
         if(messageObject.sender === "ChatGPT"){
