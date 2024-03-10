@@ -85,23 +85,23 @@ function MainBox() {
     <>
     
     
-    <div className="container">
+    <div id='p1' className="container">
       
-      <div className="prompt-area">
+      <div id='p2' className="prompt-area">
         <input type="text" placeholder="Send a message..." value={input} onChange={handleChange} />
         <button className="submit" type="submit" onClick={handleSend}>Send</button>
       </div>
 
-      <div className="response-area">
+      <div id='p3' className="response-area">
       <h1 style={{textAlign:"center",fontWeight:"bolder",color:"lightblue"}}>ChatBot 3.5</h1>
         {messages.map((message, index) => {
           return (
            
-            <div className={message.sender === "ChatGPT" ? 'gpt-message' : 'user-message'}>
+            <div key={index} className={message.sender === "ChatGPT" ? 'gpt-message' : 'user-message'}>
               {
                 message.sender === "ChatGPT" ?
                   <>
-                    <div className='icon'>
+                    <div id='p5' className='icon'>
                       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48">
                         <path fill="#546e7a" d="M30.7,7.27L28.33,9.1c-1.605-2.067-4.068-3.209-6.697-3.092C17.313,6.2,14,9.953,14,14.277l0,9.143	l10.5,6.12l-1,1.72l-11.706-6.827C11.302,24.146,11,23.62,11,23.051l0-8.687C11,8.1,16.129,2.79,22.39,3.007	C25.669,3.12,28.68,4.663,30.7,7.27z"></path>
                         <path fill="#546e7a" d="M12.861,9.833l0.4,2.967c-2.592,0.357-4.813,1.919-6.026,4.254c-1.994,3.837-0.4,8.582,3.345,10.745	l7.918,4.571l10.55-6.033l0.99,1.726l-11.765,6.724c-0.494,0.282-1.101,0.281-1.594-0.003l-7.523-4.343	C3.73,27.308,1.696,20.211,5.014,14.898C6.752,12.114,9.594,10.279,12.861,9.833z"></path>
@@ -114,7 +114,7 @@ function MainBox() {
                   </>
                   :
                   <>
-                    <div className='icon'>
+                    <div id='p6' className='icon'>
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 48 48">
                         <path fill="#546e7a" d="M30.7,7.27L28.33,9.1c-1.605-2.067-4.068-3.209-6.697-3.092C17.313,6.2,14,9.953,14,14.277l0,9.143	l10.5,6.12l-1,1.72l-11.706-6.827C11.302,24.146,11,23.62,11,23.051l0-8.687C11,8.1,16.129,2.79,22.39,3.007	C25.669,3.12,28.68,4.663,30.7,7.27z"></path>
                         <path fill="#546e7a" d="M12.861,9.833l0.4,2.967c-2.592,0.357-4.813,1.919-6.026,4.254c-1.994,3.837-0.4,8.582,3.345,10.745	l7.918,4.571l10.55-6.033l0.99,1.726l-11.765,6.724c-0.494,0.282-1.101,0.281-1.594-0.003l-7.523-4.343	C3.73,27.308,1.696,20.211,5.014,14.898C6.752,12.114,9.594,10.279,12.861,9.833z"></path>
@@ -128,7 +128,7 @@ function MainBox() {
               }
 
 
-              <div className='message'>
+              <div id='p7' className='message'>
                 {message.message}
               </div>
 
