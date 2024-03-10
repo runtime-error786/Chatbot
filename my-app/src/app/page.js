@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import 'dotenv/config'
 
 function MainBox() {
   const [input, setInput] = useState("");
@@ -30,55 +31,56 @@ function MainBox() {
     await processMessageToChatGPT(newMessages);
   }
 
-  async function processMessageToChatGPT(chatMessages) {
-    let API = "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";
-    let apiMessages = chatMessages.map((messageObject) => {
-      let role = "";
-      if (messageObject.sender === "ChatGPT") {
-        role = "assistant"
-      } else {
-        role = "user"
-      }
-      return (
-        { role: role, content: messageObject.message }
-      )
+  async function processMessageToChatGPT(chatMessages){
+    const API_KEY ="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";
+    console.log(API_KEY)
+    let apiMessages = chatMessages.map((messageObject)=>{
+        let role="";
+        if(messageObject.sender === "ChatGPT"){
+            role = "assistant"
+        }else{
+            role = "user"
+        }
+        return (
+            {role: role, content: messageObject.message}
+        )
     });
 
     const systemMessage = {
-      role: "system",
-      content: "Explain all concept like i am 10 year old"
+        role: "system",
+        content: "Explain all concept like i am 10 year old"
     }
 
     const apiRequestBody = {
-      "model": "gpt-3.5-turbo",
-      "messages": [
-        systemMessage,
-        ...apiMessages
-      ]
+        "model": "gpt-3.5-turbo",
+        "messages": [
+            systemMessage,
+            ...apiMessages
+        ]
     }
 
-    await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${API}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(apiRequestBody)
-    }).then((response) => {
-      return response.json();
-    }).then((data) => {
-      console.log(data.choices[0].message.content);
-      setMessages(
-        [
-          ...chatMessages,
-          {
-            message: data.choices[0].message.content,
-            sender: "ChatGPT"
-          }
-        ]
-      )
+    await fetch("https://api.openai.com/v1/chat/completions",{
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${API_KEY}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(apiRequestBody)
+    }).then((response)=>{
+        return response.json();
+    }).then((data)=>{
+        console.log(data.choices[0].message.content);
+        setMessages(
+            [
+                ...chatMessages,
+                {
+                    message: data.choices[0].message.content,
+                    sender: "ChatGPT"
+                }
+            ]
+        )
     })
-  }
+}
 
   return (
     <>
