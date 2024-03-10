@@ -1,6 +1,5 @@
 "use client"
 import React, { useState } from 'react';
-import 'dotenv/config'
 
 function MainBox() {
   const [input, setInput] = useState("");
@@ -32,7 +31,7 @@ function MainBox() {
   }
 
   async function processMessageToChatGPT(chatMessages) {
-    
+    let API = "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";
     let apiMessages = chatMessages.map((messageObject) => {
       let role = "";
       if (messageObject.sender === "ChatGPT") {
@@ -61,7 +60,7 @@ function MainBox() {
     await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer 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`,
+        "Authorization": `Bearer ${API}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(apiRequestBody)
