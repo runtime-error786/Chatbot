@@ -31,7 +31,7 @@ function MainBox() {
   }
 
   async function processMessageToChatGPT(chatMessages) {
-    let API = "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";
+    let API = "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";
     let apiMessages = chatMessages.map((messageObject) => {
       let role = "";
       if (messageObject.sender === "ChatGPT") {
