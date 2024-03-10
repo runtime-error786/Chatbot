@@ -61,7 +61,7 @@ function MainBox() {
     await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_PUBLICAPI_KEY}`,
+        "Authorization": `Bearer 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`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(apiRequestBody)
